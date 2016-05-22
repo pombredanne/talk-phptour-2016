@@ -152,19 +152,6 @@
 					</section>
 
 					<section>
-						<h2>Fréquence des mises à jour</h2>
-						<ul>
-							<li>Pas de calendrier défini</li>
-							<li>10 versions mineures en deux ans</li>
-							<li>Pas de vrai respect de SEMVER</li>
-						</ul>
-
-						<aside class="notes">
-							Versions correctives qui apportaient de nouvelles fonctionnalités, donc pas de SEMVER
-						</aside>
-					</section>
-
-					<section>
 						<h2>Lacunes techniques</h2>
 						<ul>
 							<li>Dépendances versionnées</li>
@@ -178,6 +165,19 @@
 
 						<aside class="notes">
 							34.000 téléchargements depuis déc. 2013
+						</aside>
+					</section>
+
+					<section>
+						<h2>Fréquence des mises à jour</h2>
+						<ul>
+							<li>Pas de calendrier défini</li>
+							<li>10 versions mineures en deux ans</li>
+							<li>Pas de vrai respect de SEMVER</li>
+						</ul>
+
+						<aside class="notes">
+							Versions correctives qui apportaient de nouvelles fonctionnalités, donc pas de SEMVER
 						</aside>
 					</section>
 				</section>
@@ -201,15 +201,10 @@
 							<li>Compatible HHVM (<i>même si personne ne s'en sert</i>)</li>
 							<li>Symfony 3</li>
 						</ul>
-					</section>
 
-					<section>
-						<h2>Fréquence des mises à jour</h2>
-						<ul>
-							<li>Roadmap établie</li>
-							<li>Respect de SEMVER</li>
-							<li>Une version mineure tous les trois mois</li>
-						</ul>
+						<aside class="notes">
+							Grace à Symfony 3: contributions plus "simple" (plus cadré et plus connu)
+						</aside>
 					</section>
 
 					<section>
@@ -219,23 +214,33 @@
 								Sorte de <i>Definition of Done</i> pour chaque commit :
 								<ul>
 									<li>Documentation utilisateur</li>
-									<li>Tests unitaires et fonctionnels</li>
+									<li>Tests unitaires et / ou fonctionnels</li>
 									<li>Relecture des PRs</li>
 								</ul>
 							</li>
-							<li>Déploiement via Capistrano</li>
+							<li>Déploiement via Capistrano (sur <i>v2.wallabag.org</i>)</li>
 							<li>Migrations BDD</li>
 							<li>Le moins d'actions manuelles possible</li>
 							<li>Équipe plus conséquente : une core team, des traducteurs, des développeurs</li>
 						</ul>
 
 						<aside class="notes">
+							Packaging, release, doc, etc.
 							Equipe de 20 personnes
 							8 traducteurs
 							3.600 téléchargements (depuis la première alpha)
 							9.200 comptes sur Framabag (https://framabag.org/analytics/ )
 						</aside>
 
+					</section>
+
+					<section>
+						<h2>Fréquence des mises à jour</h2>
+						<ul>
+							<li>Roadmap établie</li>
+							<li>Respect de SEMVER</li>
+							<li>Une version mineure tous les 3 mois</li>
+						</ul>
 					</section>
 
 					<section>
@@ -324,6 +329,8 @@
 							<li>Un framework, c'est lourd</li>
 							<li>Le <i>plain PHP</i> c'est forcément rapide</li>
 							<li>Pas trop focalisé sur la perf, <i>pour le moment</i></li>
+							<li>Plusieurs pistes d'améliorations (Redis, APC, Blackfire, etc.)</li>
+							<li><b>Surtout</b> un confort de développement pour les devs</li>
 						</ul>
 					</section>
 				</section>
@@ -369,6 +376,7 @@ $result = @file_get_contents($request);
 
 						<aside class="notes">
 							La principale fonctionnalité de wallabag, c'est l'extraction de contenu. Pour cela, la v1 utilise une librairie : Full-Text RSS.
+							Full-Text RSS: première version open sourcé en 2011
 							Cette librairie n'est pas vraiment open source, la version la plus à jour est payante mais les versions précédentes sont gratuites.
 							Comme wallabag est open source, on ne peut pas utiliser la verion payante (ça rendrait son code open source ...).
 							En plus, ce n'est pas très pratique à utiliser ...
@@ -395,11 +403,11 @@ $result = @file_get_contents($request);
 
 					<section>
 						<h2>Extraction de contenu</h2>
+						<p><a href="https://github.com/j0k3r/graby">graby</a>, un fork de Full-Text RSS v3.3</p>
 						<ul>
-							<li><a href="https://github.com/j0k3r/graby">graby</a>, un fork de Full-Text RSS v3.3</li>
 							<li>Mise en place de test fonctionnels sur l'existant</li>
 							<li>Ré-organisation / refonte</li>
-							<li>SiteConfig chargé via composer</li>
+							<li><i>site_config</i> via Composer</li>
 							<li>Ajout de tests</li>
 							<li class="fragment emphasis">Et c'est plus <i>propre</i> à utiliser ...</li>
 						</ul>
@@ -435,18 +443,27 @@ $result = $graby->fetchContent($article);
 									<li>Etc.</li>
 								</ul>
 							</li>
-							<li>Globalement, tout a été réécrit</li>
+							<li>Globalement, tout a été réécrit, étape par étape</li>
 						</ul>
 					</section>
 
 					<section>
-						<h2>La migration en soi</h2>
-						<ul>
-							<li>La v2 n'est pas ISO avec la v1</li>
-							<li>v2.0.0 : focaliser sur le fonctionnement de base</li>
-							<li>v2.0.x : focaliser sur la stabilité</li>
-							<li>v2.x : amélioration des fonctionnalités (tag, recherche)</li>
-						</ul>
+						<h2>La v2 n'est pas ISO avec la v1</h2>
+
+						<table>
+							<tr>
+								<td>v2.0.0</td>
+								<td>➜ focaliser sur le fonctionnement de base</td>
+							</tr>
+							<tr>
+								<td>v2.0.x</td>
+								<td>➜ focaliser sur la stabilité</td>
+							</tr>
+							<tr>
+								<td>v2.x</td>
+								<td>➜ amélioration des fonctionnalités (tag, recherche, etc.)</td>
+							</tr>
+						</table>
 					</section>
 
 					<section>
@@ -458,6 +475,8 @@ $result = $graby->fetchContent($article);
 							<li>HateoasBundle</li>
 							<li>ApiDocBundle</li>
 						</ul>
+
+						<p><i>Si seulement <a href="https://dunglas.fr/2016/05/the-first-alpha-of-api-platform-2-0-is-available/">API Platform 2.0</a> était sorti plus tôt :)</i></p>
 					</section>
 
 					<section>
@@ -499,6 +518,16 @@ $result = $graby->fetchContent($article);
 							Grosse contrainte d'utiliser un framework comme Symfony : là où la v1 s'installe quasiment partout et très facilement, la v2 va forcément devenir
 							plus complexe à installer pour les débutants.
 						</aside>
+					</section>
+
+					<section>
+						<h2>Installation de l'application</h2>
+						<p>Deux solutions choisies :</p>
+
+						<ul>
+							<li>Via une archive incluant les dépendances</li>
+							<li>Via Git &amp; Composer</li>
+						</ul>
 					</section>
 
 					<section>
@@ -559,7 +588,8 @@ php app/console wallabag:install
 						<p>Tentative n°3</p>
 
 						<pre><code class="lang-bash" data-trim contenteditable>
-SYMFONY_ENV=prod composer create-project wallabag/wallabag wallabag "2.0.*@alpha" --no-dev
+SYMFONY_ENV=prod composer create-project wallabag/wallabag \
+	wallabag "2.0.*@alpha" --no-dev
 cd wallabag
 php app/console wallabag:install --env=prod
 						</code></pre>
@@ -593,7 +623,7 @@ php app/console wallabag:install --env=prod
 						<h2>Autres difficultés</h2>
 						<ul>
 							<li>Les migrations de données SQLite</li>
-							<li>Les demandes de SiteConfig</li>
+							<li>Les demandes de <i>site_config</i></li>
 							<li>Les issues de personnes pas très <i>techniques</i> 😕</li>
 						</ul>
 
@@ -634,49 +664,19 @@ php app/console wallabag:install --env=prod
 						</aside>
 					</section>
 
-				</section>
-
-				<section>
-
-					<section data-background="img/bg_avenir.jpg">
-						<br/><br/><br/><br/><br/>
-						<h2 class="white">Les étapes à venir</h2>
-					</section>
-
-					<section>
-						<h2>Les étapes à venir</h2>
-						<ul>
-							<li>Un front en React</li>
-							<li>Une solution SaaS</li>
-							<li>Intégration dans des applis tierces</li>
-						</ul>
-
-						<aside class="notes">
-							React ou autre chose
-							L'idée, c'est d'avoir une vraie application pour le front, qui utiliserait l'API.
-							Pas de SaaS pour la v2 (contrairement à la v1 avec Framabag).
-							Lancer un vrai SaaS de qualité est dans nos têtes.
-							Il ne nous manque que le temps pour mettre ça en place.
-						</aside>
-					</section>
-
 					<section>
 						<h2>API : intégrations déjà réalisées</h2>
-						<p><a href="https://blog.trigger-happy.eu/">Trigger-Happy.eu</a> : projet clone libre de IFTTT</p>
+						<p><a href="https://blog.trigger-happy.eu/">Trigger-Happy.eu</a> : clone libre de IFTTT</p>
 						<ul>
 							<li><a href="https://github.com/foxmask/django-th/">github.com/foxmask/django-th</a></li>
 							<li><a href="https://twitter.com/triggerhappyeu">@TriggerHappyEu</a></li>
 						</ul>
+						<p><img src="img/triggerhappy.png" /></p>
 
 						<aside class="notes">
 								Automatisant la récupération de données sur le web, pour les posters dans wallabag via son API automatiquement.
 								Les données peuvent également provenir et être publiées depuis Twitter, Trello et plein d'autres services web existants.
 						</aside>
-					</section>
-
-					<section>
-						<h2>API : intégrations déjà réalisées</h2>
-						<p><img src="img/triggerhappy.png" /></p>
 					</section>
 
 					<section>
@@ -712,10 +712,36 @@ php app/console wallabag:install --env=prod
 
 				</section>
 
+				<section>
+
+					<section data-background="img/bg_avenir.jpg">
+						<br/><br/><br/><br/><br/>
+						<h2 class="white">Les étapes à venir</h2>
+					</section>
+
+					<section>
+						<h2>To infinity... and beyond</h2>
+						<ul>
+							<li>Un front en React</li>
+							<li>Une solution SaaS</li>
+							<li>Intégration dans des applis tierces</li>
+						</ul>
+
+						<aside class="notes">
+							React ou autre chose
+							L'idée, c'est d'avoir une vraie application pour le front, qui utiliserait l'API.
+							Pas de SaaS pour la v2 (contrairement à la v1 avec Framabag).
+							Lancer un vrai SaaS de qualité est dans nos têtes.
+							Il ne nous manque que le temps pour mettre ça en place.
+						</aside>
+					</section>
+
+				</section>
+
 				<section data-background="img/bg_questions.jpg">
 					<br/><br/><br/><br/><br/><br/><br/><br/><br/>
 					<h2 class="white">Merci !</h2>
-					<h2 class="white">Des questions ?</h2>
+					<h2 class="white">Des questions ? 🤓</h2>
 				</section>
 
 			</div>
