@@ -67,14 +67,10 @@
 				<section>
 					<h2 class="black">Plan</h2>
 					<ul class="black">
-						<li>Fonctionnalités et histoire</li>
-						<li>Pourquoi ça n'était pas mieux avant</li>
-						<li>Pourquoi c'est mieux maintenant</li>
-						<li>Quelques benchmarks</li>
-						<li>En route pour la v2</li>
-						<li>Les difficultés</li>
-						<li>Les étapes en cours</li>
-						<li>Les étapes à venir</li>
+						<li>Historique</li>
+						<li>Etat des lieux</li>
+						<li>La migration</li>
+						<li>Les étapes en cours et à venir</li>
 					</ul>
 				</section>
 
@@ -216,11 +212,11 @@
 						<h2>On comble les lacunes techniques</h2>
 						<ul>
 							<li>
-								Sorte de <i>Definition of Done</i> pour chaque commit :
+								Sorte de <i>Definition of Done</i> :
 								<ul>
 									<li>Documentation utilisateur</li>
 									<li>Tests unitaires et / ou fonctionnels</li>
-									<li>Relecture des PRs</li>
+									<li>Review du code</li>
 								</ul>
 							</li>
 							<li>Déploiement via Capistrano (sur <i>v2.wallabag.org</i>)</li>
@@ -248,7 +244,8 @@
 						</ul>
 
 						<aside class="notes">
-							La fréquence rassure les gens
+							- La fréquence rassure les gens<br/>
+							- Prochaine version mineure le 3 juillet (les tags)
 						</aside>
 					</section>
 
@@ -306,7 +303,7 @@
 
 					<section>
 						<h2>Chargement des pages</h2>
-						<p><i>Analyses faites avec Blackfire</i></p>
+						<p><i>Analyses faites avec Blackfire sur PHP 7.0.6</i></p>
 						<table>
 							<tr>
 								<th></th>
@@ -478,11 +475,11 @@ $result = $graby->fetchContent($article);
 					<section>
 						<h2>Librairies utilisées pour l'API</h2>
 						<ul>
-							<li>RestBundle</li>
-							<li>CorsBundle</li>
-							<li>OAuthBundle</li>
-							<li>HateoasBundle</li>
-							<li>ApiDocBundle</li>
+							<li>FOSRestBundle</li>
+							<li>NelmioCorsBundle</li>
+							<li>FOSOAuthServerBundle</li>
+							<li>BazingaHateoasBundle</li>
+							<li>NelmioApiDocBundle</li>
 						</ul>
 
 						<p><i>Si seulement <a href="https://dunglas.fr/2016/05/the-first-alpha-of-api-platform-2-0-is-available/">API Platform 2.0</a> était sorti plus tôt :)</i></p>
@@ -543,12 +540,6 @@ $result = $graby->fetchContent($article);
 					<section>
 						<h2>Installation de l'application</h2>
 						<p>Plutôt <i>basique</i> pour la v1</p>
-
-						<pre><code class="lang-bash" data-trim contenteditable>
-							composer create-project wallabag/wallabag . dev-master
-						</code></pre>
-
-						<p>ou</p>
 
 						<pre><code class="lang-bash" data-trim contenteditable>
 wget http://wllbg.org/latest
@@ -735,7 +726,14 @@ php app/console wallabag:install --env=prod
 						<ul>
 							<li>Un front en React</li>
 							<li>Une solution SaaS</li>
-							<li>Intégration dans des applis tierces</li>
+							<li>
+								Intégration dans des applis tierces
+								<ul>
+									<li>Reeder</li>
+									<li>IFTTT</li>
+									<li>Etc.</li>
+								</ul>
+							</li>
 						</ul>
 
 						<aside class="notes">
