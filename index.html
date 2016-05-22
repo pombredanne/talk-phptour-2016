@@ -191,6 +191,11 @@
 					<section>
 						<h2>Deuxième version de wallabag</h2>
 						<p><img src="img/wllbgv2.png" /></p>
+
+						<aside class="notes">
+							- Material UI<br/>
+							- On n'est pas designer ...
+						</aside>
 					</section>
 
 					<section>
@@ -225,11 +230,11 @@
 						</ul>
 
 						<aside class="notes">
-							Packaging, release, doc, etc.
-							Equipe de 20 personnes
-							8 traducteurs
-							3.600 téléchargements (depuis la première alpha)
-							9.200 comptes sur Framabag (https://framabag.org/analytics/ )
+							- Packaging, release, doc, etc.<br/>
+							- Equipe de 20 personnes<br/>
+							- 8 traducteurs<br/>
+							- 3.600 téléchargements (depuis la première alpha)<br/>
+							- 9.200 comptes sur Framabag (https://framabag.org/analytics/)
 						</aside>
 
 					</section>
@@ -241,6 +246,10 @@
 							<li>Respect de SEMVER</li>
 							<li>Une version mineure tous les 3 mois</li>
 						</ul>
+
+						<aside class="notes">
+							La fréquence rassure les gens
+						</aside>
 					</section>
 
 					<section>
@@ -375,11 +384,11 @@ $result = @file_get_contents($request);
 						</code></pre>
 
 						<aside class="notes">
-							La principale fonctionnalité de wallabag, c'est l'extraction de contenu. Pour cela, la v1 utilise une librairie : Full-Text RSS.
-							Full-Text RSS: première version open sourcé en 2011
-							Cette librairie n'est pas vraiment open source, la version la plus à jour est payante mais les versions précédentes sont gratuites.
-							Comme wallabag est open source, on ne peut pas utiliser la verion payante (ça rendrait son code open source ...).
-							En plus, ce n'est pas très pratique à utiliser ...
+							- La principale fonctionnalité de wallabag, c'est l'extraction de contenu.<br/>
+							- En v1: Full-Text RSS (première version open sourcé en 2011)<br/>
+							- Pas vraiment open source, version la plus à jour payante mais versions précédentes gratuites.<br/>
+							- Comme wallabag est open source, on ne peut pas utiliser la verion payante (ça rendrait son code open source ...).<br/>
+							- En plus, ce n'est pas très pratique à utiliser ...
 						</aside>
 					</section>
 
@@ -396,8 +405,8 @@ $result = @file_get_contents($request);
 						<p class="fragment">➜ Forker en gardant cette logique</p>
 
 						<aside class="notes">
-							Full-Text RSS est très efficace dans ce qu'il fait, il se base sur des standards pour extraire les contenus.
-							L'idée était donc de faire un fork de Full-Text RSS en gardant ces fonctionnalités mais en le rendant plus facile à utiliser.
+							- Full-Text RSS est très efficace dans ce qu'il fait, il se base sur des standards pour extraire les contenus.<br/>
+							- L'idée était donc de faire un fork de Full-Text RSS en gardant ces fonctionnalités mais en le rendant plus facile à utiliser.
 						</aside>
 					</section>
 
@@ -422,9 +431,9 @@ $result = $graby->fetchContent($article);
 						</code></pre>
 
 						<aside class="notes">
-							Test fonctionnels sur l'existant pour valider la refonte
-							OptionResolver pour la configuration
-							Guzzle pour les appels cURL
+							- Test fonctionnels sur l'existant pour valider la refonte<br/>
+							- OptionResolver pour la configuration<br/>
+							- Guzzle pour les appels cURL
 						</aside>
 					</section>
 
@@ -515,8 +524,9 @@ $result = $graby->fetchContent($article);
 						<p class="fragment">"tout le monde" inclut des personnes <i>novices</i></p>
 
 						<aside class="notes">
-							Grosse contrainte d'utiliser un framework comme Symfony : là où la v1 s'installe quasiment partout et très facilement, la v2 va forcément devenir
-							plus complexe à installer pour les débutants.
+							- Grosse contrainte d'utiliser un framework comme Symfony :<br/>
+							- là où la v1 s'installe quasiment partout et très facilement,<br/>
+							- la v2 va forcément devenir plus complexe à installer pour les débutants.
 						</aside>
 					</section>
 
@@ -628,10 +638,10 @@ php app/console wallabag:install --env=prod
 						</ul>
 
 						<aside class="notes">
-							Concernant SQLite, les migrations de base de données sont plus complexes : supprimer un champ avec SQLite n'est pas possible (il faut supprimer la
-							table puis la recréer).
-							Toujours plus de SiteConfig
-							Toujours difficile d'isoler un souci
+							- Concernant SQLite, les migrations de base de données sont plus complexes : supprimer un champ avec SQLite n'est pas possible (il faut supprimer la
+							table puis la recréer).<br/>
+							- Toujours plus de SiteConfig<br/>
+							- Toujours difficile d'isoler un souci
 						</aside>
 					</section>
 
@@ -653,14 +663,14 @@ php app/console wallabag:install --env=prod
 						</ul>
 
 						<aside class="notes">
-							Imports très gourmands en ressource
-							Timeout en pagaille
-							RabbitMQ pour l'instant, mais rien n'est encore réellement acté
-							Pour
-								* import
-								* action en masse sur les articles (refetch du contenu par exemple)
+							- Imports très gourmands en ressource<br/>
+							- Timeout en pagaille<br/>
+							- RabbitMQ pour l'instant, mais rien n'est encore réellement acté<br/>
+							- Pour<br/>
+								* import<br/>
+								* action en masse sur les articles (refetch du contenu par exemple)<br/>
 
-							ES pour la recherche avancée ou de la recommandation
+							- ES pour la recherche avancée ou de la recommandation
 						</aside>
 					</section>
 
@@ -674,8 +684,8 @@ php app/console wallabag:install --env=prod
 						<p><img src="img/triggerhappy.png" /></p>
 
 						<aside class="notes">
-								Automatisant la récupération de données sur le web, pour les posters dans wallabag via son API automatiquement.
-								Les données peuvent également provenir et être publiées depuis Twitter, Trello et plein d'autres services web existants.
+								- Automatisant la récupération de données sur le web, pour les posters dans wallabag via son API automatiquement.<br/>
+								- Les données peuvent également provenir et être publiées depuis Twitter, Trello et plein d'autres services web existants.
 						</aside>
 					</section>
 
@@ -689,9 +699,9 @@ php app/console wallabag:install --env=prod
 						</ul>
 
 						<aside class="notes">
-							Aujourd'hui, nos applications sont l'un des points faibles du projet : elles n'avancent pas au même rythme que l'application web, certaines
-							fonctionnalités attendaient l'API pour que l'on puisse les mettre en place. Pour l'application Android, elle est compatible avec la v2 mais
-							n'utilise pas encore l'API.
+							- Aujourd'hui, nos applications sont l'un des points faibles du projet : elles n'avancent pas au même rythme que l'application web<br/>
+							- Certaines fonctionnalités attendaient l'API pour que l'on puisse les mettre en place.<br/>
+							- Pour l'application Android, elle est compatible avec la v2 mais n'utilise pas encore l'API.
 						</aside>
 					</section>
 
@@ -705,9 +715,9 @@ php app/console wallabag:install --env=prod
 						</ul>
 
 						<aside class="notes">
-							Concernant Cozy Cloud ou ownCloud, la demande des utilisateurs devient de plus en plus forte. Nous sommes déjà en contact avec eux.
-							Pour les fabricants de liseuses, Nicolas a déjà rencontré il y a plusieurs mois un fabricant français, mais la discussion est restée en standby.
-							Si certains sont intéressés, qu'ils nous contactent.
+							- Concernant Cozy Cloud ou ownCloud, la demande des utilisateurs devient de plus en plus forte. Nous sommes déjà en contact avec eux.<br/>
+							- Pour les fabricants de liseuses, Nicolas a déjà rencontré il y a plusieurs mois un fabricant français, mais la discussion est restée en standby.<br/>
+							- Si certains sont intéressés, qu'ils nous contactent.
 						</aside>
 					</section>
 
@@ -729,11 +739,11 @@ php app/console wallabag:install --env=prod
 						</ul>
 
 						<aside class="notes">
-							React ou autre chose
-							L'idée, c'est d'avoir une vraie application pour le front, qui utiliserait l'API.
-							Pas de SaaS pour la v2 (contrairement à la v1 avec Framabag).
-							Lancer un vrai SaaS de qualité est dans nos têtes.
-							Il ne nous manque que le temps pour mettre ça en place.
+							- React ou autre chose<br/>
+							- L'idée, c'est d'avoir une vraie application pour le front, qui utiliserait l'API.<br/>
+							- Pas de SaaS pour la v2 (contrairement à la v1 avec Framabag).<br/>
+							- Lancer un vrai SaaS de qualité est dans nos têtes.<br/>
+							- Il ne nous manque que le temps pour mettre ça en place.
 						</aside>
 					</section>
 
